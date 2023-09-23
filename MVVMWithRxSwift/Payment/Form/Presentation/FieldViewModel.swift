@@ -9,6 +9,7 @@ public struct FieldViewModel {
     public let title: String
     public let text = BehaviorRelay<String>(value: "")
     public let focus = PublishRelay<Void>()
+    public let unfocus = PublishRelay<Void>()
         
     public init(title: String = "") {
         self.title = title

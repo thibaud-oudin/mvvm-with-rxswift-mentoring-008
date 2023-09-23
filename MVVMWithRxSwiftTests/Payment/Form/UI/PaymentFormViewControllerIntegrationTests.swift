@@ -47,6 +47,18 @@ class PaymentFormViewControllerIntegrationTests: XCTestCase {
         assert(sut, isShowingAllFieldsFor: state.current)
     }
 
+    func test_returnOnKeyboardWhenFocusOnField_showsAllFields() throws {
+        let service = SuggestionsServiceStub()
+        let (sut, vm) = makeSUT(service: service)
+        let state = ViewModelStateSpy(vm.state)
+
+        sut.focusOnFieldCell(inSection: 0, atIndex: 0)
+        let responder = try XCTUnwrap(sut.enterTextOnFieldCell(service.stub.query, inSection: 0, atIndex: 0))
+        sut.returnOnKeyboard(with: responder)
+
+        assert(sut, isShowingAllFieldsFor: state.current)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(service: SuggestionsServiceStub = .init()) -> (PaymentFormViewController, PaymentFormViewModel) {
@@ -125,13 +137,19 @@ private extension PaymentFormViewController {
         firstFieldCell?.focusButton.sendActions(for: .touchUpInside)
     }
     
-    func enterTextOnFieldCell(_ text: String, inSection section: Int, atIndex index: Int) {
+    @discardableResult
+    func enterTextOnFieldCell(_ text: String, inSection section: Int, atIndex index: Int) -> UITextField? {
         let firstFieldCell = cell(inSection: section, atIndex: index) as? FieldCell
         firstFieldCell?.inputTextField.text = text
         firstFieldCell?.inputTextField.sendActions(for: .editingChanged)
+        return firstFieldCell?.inputTextField
     }
     
     func selectSuggestion(inSection section: Int, atIndex index: Int) {
         tableView.delegate?.tableView?(tableView, didSelectRowAt: IndexPath(row: index, section: section))
+    }
+    
+    func returnOnKeyboard(with responder: UITextField) {
+        responder.sendActions(for: .editingDidEndOnExit)
     }
 }

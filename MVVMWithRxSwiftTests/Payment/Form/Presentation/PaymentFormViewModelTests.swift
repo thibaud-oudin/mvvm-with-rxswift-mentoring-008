@@ -166,6 +166,53 @@ class PaymentFormViewModelTests: XCTestCase {
         ])
     }
     
+    func test_taxNumberUnfocusEvent_includesAllFields() throws {
+        let service = SuggestionsServiceStub()
+        let (sut, fields) = makeSUT(service: service)
+        let state = StateSpy(sut.state)
+        
+        fields.taxNumber.text.accept(service.stub.query)
+        fields.taxNumber.unfocus.accept(())
+        
+        XCTAssertEqual(state.values, [
+            .fields(fields.all),
+            .focus(fields.taxNumber, service.stub.suggestions.map(SuggestionViewModel.init)),
+            .fields(fields.all),
+        ])
+    }
+    
+    func test_ibanUnfocusEvent_includesAllFields() throws {
+        let service = SuggestionsServiceStub()
+        let (sut, fields) = makeSUT(service: service)
+        let state = StateSpy(sut.state)
+        
+        fields.iban.text.accept(service.stub.query)
+        fields.iban.unfocus.accept(())
+        
+        XCTAssertEqual(state.values, [
+            .fields(fields.all),
+            .focus(fields.iban, service.stub.suggestions.map(SuggestionViewModel.init)),
+            .fields(fields.all),
+        ])
+    }
+    
+    func test_bankNameUnFocusEvent_includesAllFormFields() {
+        let (sut, fields) = makeSUT()
+        let state = StateSpy(sut.state)
+
+        fields.bankName.unfocus.accept(())
+
+        XCTAssertEqual(state.values, [.fields(fields.all), .fields(fields.all)])
+    }
+    
+    func test_commentUnFocusEvent_includesAllFormFields() {
+        let (sut, fields) = makeSUT()
+        let state = StateSpy(sut.state)
+
+        fields.comment.unfocus.accept(())
+
+        XCTAssertEqual(state.values, [.fields(fields.all), .fields(fields.all)])
+    }
     
     // MARK: - Helpers
 

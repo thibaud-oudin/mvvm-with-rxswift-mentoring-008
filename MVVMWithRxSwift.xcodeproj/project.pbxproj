@@ -29,6 +29,7 @@
 		08FF1ED52459DBE000CCE672 /* AppDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FF1ED42459DBE000CCE672 /* AppDelegateTests.swift */; };
 		08FF1EE22459DE4C00CCE672 /* RandomSuggestionsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08FF1EE12459DE4C00CCE672 /* RandomSuggestionsService.swift */; };
 		39CCD09084C657346BE30390 /* Pods_MVVMWithRxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C70454E1E2F2E231CF8B7A /* Pods_MVVMWithRxSwift.framework */; };
+		9900ACEC2ABF97A70055A8E2 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9900ACEB2ABF97A70055A8E2 /* Helpers.swift */; };
 		A3B40E44D66539DCEADC9E75 /* Pods_MVVMWithRxSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F357D93F230E9B223C25FE3 /* Pods_MVVMWithRxSwiftTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		0F357D93F230E9B223C25FE3 /* Pods_MVVMWithRxSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMWithRxSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C70454E1E2F2E231CF8B7A /* Pods_MVVMWithRxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMWithRxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91E9510846E8C027033B1F0C /* Pods-MVVMWithRxSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMWithRxSwiftTests.debug.xcconfig"; path = "Target Support Files/Pods-MVVMWithRxSwiftTests/Pods-MVVMWithRxSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9900ACEB2ABF97A70055A8E2 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		BA8960D0CD3F48E05001E395 /* Pods-MVVMWithRxSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMWithRxSwift.release.xcconfig"; path = "Target Support Files/Pods-MVVMWithRxSwift/Pods-MVVMWithRxSwift.release.xcconfig"; sourceTree = "<group>"; };
 		C1466D7A64A05605B7EB53E2 /* Pods-MVVMWithRxSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMWithRxSwift.debug.xcconfig"; path = "Target Support Files/Pods-MVVMWithRxSwift/Pods-MVVMWithRxSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		FFA5DB1ED711D68B29844141 /* Pods-MVVMWithRxSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMWithRxSwiftTests.release.xcconfig"; path = "Target Support Files/Pods-MVVMWithRxSwiftTests/Pods-MVVMWithRxSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 		08FF1EDA2459DD8F00CCE672 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9900ACEB2ABF97A70055A8E2 /* Helpers.swift */,
 				08FF1EC82459BF5D00CCE672 /* PaymentFormViewController.swift */,
 				08FF1ECC2459BFF100CCE672 /* FieldCell.swift */,
 			);
@@ -433,6 +436,7 @@
 				08FF1EBB2459BD2800CCE672 /* SuggestionViewModel.swift in Sources */,
 				08FF1E912459B6AB00CCE672 /* AppDelegate.swift in Sources */,
 				08FF1EC32459BE2500CCE672 /* PaymentFormViewModel.swift in Sources */,
+				9900ACEC2ABF97A70055A8E2 /* Helpers.swift in Sources */,
 				08FF1ECD2459BFF100CCE672 /* FieldCell.swift in Sources */,
 				08FF1EC92459BF5D00CCE672 /* PaymentFormViewController.swift in Sources */,
 				08FF1EC52459BE5A00CCE672 /* CellViewModel.swift in Sources */,

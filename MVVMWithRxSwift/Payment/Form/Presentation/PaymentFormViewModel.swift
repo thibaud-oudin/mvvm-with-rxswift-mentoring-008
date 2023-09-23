@@ -39,6 +39,10 @@ public struct PaymentFormViewModel {
             focus(for: taxNumber),
             search(for: iban),
             search(for: taxNumber),
+            unfocus(for: iban, defaultState: allFields),
+            unfocus(for: taxNumber, defaultState: allFields),
+            unfocus(for: bankName, defaultState: allFields),
+            unfocus(for: comment, defaultState: allFields),
             suggestionSelection.map {
                 allFields
             },
@@ -63,6 +67,13 @@ public struct PaymentFormViewModel {
     private func focus(for field: FieldViewModel) -> Observable<State> {
         field.focus.map {
             .focus(field, [])
+        }
+    }
+    
+    private func unfocus(for field: FieldViewModel, defaultState: State) -> Observable<State> {
+        field.unfocus
+            .map {
+            defaultState
         }
     }
 }

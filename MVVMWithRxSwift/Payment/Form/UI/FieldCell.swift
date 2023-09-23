@@ -45,6 +45,11 @@ public class FieldCell: UITableViewCell {
             .bind(to: vm.focus)
             .disposed(by: disposeBag)
 
+        
+        inputTextField.rx_resignFirstResponder
+            .bind(to: vm.unfocus)
+            .disposed(by: disposeBag)
+
         cellTitleLabel.text = vm.title
     }
     
