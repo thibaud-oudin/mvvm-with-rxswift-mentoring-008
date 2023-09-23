@@ -138,6 +138,35 @@ class PaymentFormViewModelTests: XCTestCase {
         ])
     }
 
+    func test_ibanEmptyTextChangeState_doesNotQuerySuggestions() {
+        let service = SuggestionsServiceStub()
+        let (sut, fields) = makeSUT(service: service)
+        let state = StateSpy(sut.state)
+        
+        fields.iban.text.accept(service.stub.query)
+        fields.iban.text.accept("")
+
+        XCTAssertEqual(state.values, [
+            .fields(fields.all),
+            .focus(fields.iban, service.stub.suggestions.map(SuggestionViewModel.init))
+        ])
+    }
+    
+    func test_taxNumberEmptyTextChangeState_doesNotQuerySuggestions() {
+        let service = SuggestionsServiceStub()
+        let (sut, fields) = makeSUT(service: service)
+        let state = StateSpy(sut.state)
+        
+        fields.taxNumber.text.accept(service.stub.query)
+        fields.taxNumber.text.accept("")
+
+        XCTAssertEqual(state.values, [
+            .fields(fields.all),
+            .focus(fields.taxNumber, service.stub.suggestions.map(SuggestionViewModel.init))
+        ])
+    }
+    
+    
     // MARK: - Helpers
 
     private func makeSUT(service: SuggestionsServiceStub = .init()) -> (

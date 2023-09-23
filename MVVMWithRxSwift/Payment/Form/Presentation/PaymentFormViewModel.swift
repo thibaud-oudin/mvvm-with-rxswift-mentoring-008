@@ -50,6 +50,7 @@ public struct PaymentFormViewModel {
         field.text
             .distinctUntilChanged()
             .skip(1)
+            .filter({!$0.isEmpty})
             .flatMap { [service] query in
                 service.perform(request: .init(query: query)).asObservable()
             }.map { [suggestionSelection] suggestions in
